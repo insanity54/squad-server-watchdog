@@ -1,0 +1,15 @@
+{% extends "template.nunjucks" %}
+
+
+{% block main %}
+<ul>
+<li><strong>Discord</strong> <a target="_blank" href="https://discord.gg/rxuPr8e">https://discord.gg/rxuPr8e</a></li>
+<li><strong>E-Mail</strong> <a href="mailto:chris@squadserversfast.com">chris@squadserversfast.com</a></li>
+</ul>
+{% endblock %}
+
+{% block left %}
+{% endblock %}
+
+{% block right %}
+{% endblock %}

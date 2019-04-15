@@ -1,0 +1,15 @@
+{% extends "template.nunjucks" %}
+
+{% block header %}
+<h1>SquadServersFast.com - Server Management</h1>
+
+{% endblock %}
+
+
+{% block left %}
+This is the left side!
+{% endblock %}
+
+{% block right %}
+This is the right side!
+{% endblock %}

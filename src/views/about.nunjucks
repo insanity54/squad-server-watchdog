@@ -1,0 +1,13 @@
+{% extends "template.nunjucks" %}
+
+{% block main %}
+<a target="_blank" href="https://squadserversfast.com/">Squad Servers Fast</a> is brought to you by <a target="_blank" href="https://grimtech.net/">Grimtech.net</a>
+{% endblock %}
+
+{% block left %}
+This is the left side!
+{% endblock %}
+
+{% block right %}
+This is the right side!
+{% endblock %}

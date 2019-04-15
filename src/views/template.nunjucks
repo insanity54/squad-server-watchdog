@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>{{ title | default("default title") }}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ description }}">
+    <meta name="author" content="{{ author }}">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="https://ink.global.ssl.fastly.net/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://ink.global.ssl.fastly.net/3.1.10/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    {% endblock %}
+  </head>
+  <body>
+
+    <div class="ink-grid">
+
+      <header>
+        <div id="topbar">
+          <div class="ink-navigation">
+            <ul class="menu horizontal black flyout">
+
+              <li class="heading"><a href="/">Server Management</a></li>
+              <li><a href="/support">Support</a></li>
+            </ul>
+          </div>
+        </div>
+      {% block header %}
+          default header
+      {% endblock %}
+      </header>
+
+
+      <section class="main">
+        {% block main %}main default content{% endblock %}
+      </section>
+
+      <section class="left">
+        {% block left %}left default content{% endblock %}
+      </section>
+
+      <section class="right">
+        {% block right %}
+        right default content
+        {% endblock %}
+      </section>
+
+
+      {% block scripts %}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/js/ink-all.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="/sqpaymentform-basic.css">
+      {% endblock %}
+
+    </div> {# / .ink-grid #}
+  </body>
+
+</html>
