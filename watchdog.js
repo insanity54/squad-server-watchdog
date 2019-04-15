@@ -1,5 +1,4 @@
 const { spawn } = require('child_process');
-const ls = spawn('ls', ['-lh', '/usr']);
 const path = require('path');
 const squadServerPath = 'C:\servers\squad\SquadServer.exe';
 const squad = spawn(squadServerPath);
