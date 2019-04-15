@@ -1,10 +1,11 @@
 const { spawn } = require('child_process');
 const path = require('path');
 const squadServerPath = 'C:\\servers\\squad_server\\SquadServer.exe';
+const squadServerArgs = ['Port=7787', 'QueryPort=27165', '-log'];
 const spawnOpts = {
-  stdio: 'inherit'
+  stdio: 'pipe'
 };
-const squad = spawn(squadServerPath);
+const squad = spawn(squadServerPath, squadServerArgs, spawnOpts);
 
 squad.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);
