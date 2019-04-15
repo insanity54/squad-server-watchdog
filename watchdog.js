@@ -1,6 +1,6 @@
 const { spawn } = require('child_process');
 const path = require('path');
-const squadServerPath = 'C:\\servers\\squad\\SquadServer.exe';
+const squadServerPath = 'C:\\servers\\squad_server\\SquadServer.exe';
 const squad = spawn(squadServerPath);
 
 squad.stdout.on('data', (data) => {
