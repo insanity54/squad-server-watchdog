@@ -1,6 +1,9 @@
 const { spawn } = require('child_process');
 const path = require('path');
 const squadServerPath = 'C:\\servers\\squad_server\\SquadServer.exe';
+const spawnOpts = {
+  stdio: 'inherit'
+};
 const squad = spawn(squadServerPath);
 
 squad.stdout.on('data', (data) => {
