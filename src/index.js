@@ -19,7 +19,7 @@ const getSquadServerName = () => {
     const squadServerRegexResult = squadServerNameRegex.exec(squadServerCfgData);
     const squadServerName = squadServerRegexResult[1];
     console.log(`squadServerCfgData: ${squadServerCfgData}, squadServerRegexResult: ${squadServerRegexResult}, squadServerName: ${squadServerName}`);
-    return squadServername;
+    return squadServerName;
   }
 
   else {
