@@ -1,12 +1,24 @@
 require('dotenv').config();
-const express = require('express');
-const app = express();
+
+
 const nunjucks = require('nunjucks');
 const os = require('os');
 const ifaces = os.networkInterfaces();
 const path = require('path');
 const templateDir = path.join(__dirname, 'views');
 const fs = require('fs');
+
+
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+
+const watchdog = require('./watchdog')(app, io);
+
+
+
 
 
 const getSquadServerName = () => {
@@ -58,7 +70,7 @@ app.get('/support', function(req, res, next) {
 
 
 const port = process.env.SQUAD_SERVER_WATCHDOG_PORT || 80;
-app.listen(port, function(err) {
+server.listen(port, function(err) {
   if (err) throw err;
   console.log(`Available on:`);
 
@@ -69,6 +81,9 @@ app.listen(port, function(err) {
       }
     });
   });
-
-
 });
+
+
+io.on('connection', function(socket) {
+  socket.emit('news', { hello: 'world' });
+})
