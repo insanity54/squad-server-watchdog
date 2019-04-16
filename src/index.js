@@ -15,9 +15,10 @@ const getSquadServerName = () => {
   if (os.type() === 'Windows_NT') {
     const squadServerCfgFile = path.normalize('C:\\servers\\squad_server\\Squad\\ServerConfig\\Server.cfg');
     const squadServerCfgData = fs.readFileSync(squadServerCfgFile);
-    console.log(`squadServerCfgData: ${squadServerCfgData}`);
     const squadServerNameRegex = /ServerName=(.*)$/i;
-    const squadServerName = squadServerNameRegex.exec(squadServerCfgData)[1];
+    const squadServerRegexResult = squadServerNameRegex.exec(squadServerCfgData);
+    const squadServerName = squadServerRegexResult[1];
+    console.log(`squadServerCfgData: ${squadServerCfgData}, squadServerRegexResult: ${squadServerRegexResult}, squadServerName: ${squadServername}`);
     return squadServername;
   }
 
