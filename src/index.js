@@ -6,6 +6,7 @@ const os = require('os');
 const ifaces = os.networkInterfaces();
 const path = require('path');
 const templateDir = path.join(__dirname, 'views');
+const fs = require('fs');
 
 
 const getSquadServerName = () => {
