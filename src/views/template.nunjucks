@@ -30,22 +30,20 @@
           </div>
         </div>
       {% block header %}
-          default header
       {% endblock %}
       </header>
 
 
       <section class="main">
-        {% block main %}main default content{% endblock %}
+        {% block main %}{% endblock %}
       </section>
 
       <section class="left">
-        {% block left %}left default content{% endblock %}
+        {% block left %}{% endblock %}
       </section>
 
       <section class="right">
         {% block right %}
-        right default content
         {% endblock %}
       </section>
 

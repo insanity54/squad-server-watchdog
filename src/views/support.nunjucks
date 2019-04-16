@@ -1,6 +1,11 @@
 {% extends "template.nunjucks" %}
 
 
+{% block header %}
+  <h1>SquadServersFast.com - Support</h1>
+  <p>Customer satisfaction is very important to us. All support inquiries will be answered as soon as humanly possible!</p>
+{% endblock %}
+
 {% block main %}
 <ul>
 <li><strong>Discord</strong> <a target="_blank" href="https://discord.gg/rxuPr8e">https://discord.gg/rxuPr8e</a></li>

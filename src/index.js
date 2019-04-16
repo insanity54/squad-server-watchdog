@@ -6,8 +6,26 @@ const os = require('os');
 const ifaces = os.networkInterfaces();
 const path = require('path');
 const templateDir = path.join(__dirname, 'views');
-const squadServerCfgFile = path.normalize('C:\servers\squad_server\Squad\')
 
+
+const getSquadServerName = () => {
+  var squadServerName;
+
+  if (os.type() === 'Windows_NT') {
+    const squadServerCfgFile = path.normalize('C:\\servers\\squad_server\\Squad\\ServerConfig\\Server.cfg');
+    const squadServerCfgData = fs.readFileSync(squadServerCfgFile);
+    console.log(`squadServerCfgData: ${squadServerCfgData}`);
+    const squadServerNameRegex = /ServerName(.*)$/i;
+    const squadServerName = squadServerNameRegex.exec(squadServerCfgData)[1];
+    return squadServername;
+  }
+
+  else {
+    squadServerName = '🐧My Cool Squad Server🐧';
+  }
+
+  return squadServerName;
+}
 
 nunjucks.configure(templateDir, {
   express: app,
@@ -18,7 +36,7 @@ app.set('view engine', 'nunjucks');
 const siteData = {
   title: 'Squad Servers Fast',
   subtitle: 'Server Management',
-  squad_server_name: process.env.SQUAD_SERVER_NAME || 'My Squad Server',
+  squadServerName: getSquadServerName(),
   description: 'Squad Servers Fast Server Management',
   author: 'chris grimmett'
 };
