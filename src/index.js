@@ -57,7 +57,7 @@ app.get('/support', function(req, res, next) {
 });
 
 
-const port = process.env.PORT || 5555;
+const port = process.env.SQUAD_SERVER_WATCHDOG_PORT || 5555;
 app.listen(port, function(err) {
   if (err) throw err;
   console.log(`Available on:`);
