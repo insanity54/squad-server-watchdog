@@ -64,7 +64,9 @@ const siteData = {
   title: 'Squad Servers Fast',
   subtitle: 'Server Management',
   squadServerName: getSquadServerName(),
-  squadServerQueryPort:
+  squadServerQueryPort: squadServerQueryPort,
+  squadServerPort: squadServerPort,
+  squadServerIp: squadServerIp,
   description: 'Squad Servers Fast Control Panel',
   author: 'chris grimmett'
 };
