@@ -11,7 +11,6 @@ const spawnOpts = {
   stdio: 'pipe'
 };
 
-const squadServerPort =
 
 const getSpawn = () => {
   var squadServerPath;
