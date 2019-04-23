@@ -47,7 +47,7 @@ const getSquadServerIp = () => {
   var ip;
   Object.keys(ifaces).forEach(function (dev) {
     ifaces[dev].forEach(function (details) {
-      if (details.family === 'IPv4' && details.cidr !== '00:00:00:00:00:00') {
+      if (details.family === 'IPv4' && details.internal === false) {
         ip = details.address;
       }
     });
