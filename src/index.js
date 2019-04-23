@@ -17,7 +17,9 @@ const io = require('socket.io')(server);
 
 const watchdog = require('./watchdog')(app, io);
 
-
+const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT;
+const squadServerPort = process.env.SQUAD_SERVER_PORT;
+const squadServerIp = process.env.SQUAD_SERVER_IP;
 
 
 
@@ -27,6 +29,8 @@ const getSquadServerName = () => {
   if (os.type() === 'Windows_NT') {
     const squadServerCfgFile = path.normalize('C:\\servers\\squad_server\\Squad\\ServerConfig\\Server.cfg');
     const squadServerCfgData = fs.readFileSync(squadServerCfgFile);
+    const squadServerNameRegex = /ServerName=(.*)/i;
+    const squadServerPortRegex = /ServerPort=(.*)/i;
     const squadServerNameRegex = /ServerName=(.*)/i;
     const squadServerRegexResult = squadServerNameRegex.exec(squadServerCfgData);
     const squadServerName = squadServerRegexResult[1];
@@ -41,6 +45,17 @@ const getSquadServerName = () => {
   return squadServerName;
 }
 
+
+const getSquadServerIp = () => {
+  Object.keys(ifaces).forEach(function (dev) {
+    ifaces[dev].forEach(function (details) {
+      if (details.family === 'IPv4') {
+        console.log(('  ' + 'http://' + details.address + ':' + port.toString()));
+      }
+    });
+  });
+}
+
 nunjucks.configure(templateDir, {
   express: app,
   watch: true
@@ -51,6 +66,7 @@ const siteData = {
   title: 'Squad Servers Fast',
   subtitle: 'Server Management',
   squadServerName: getSquadServerName(),
+  squadServerQueryPort:
   description: 'Squad Servers Fast Control Panel',
   author: 'chris grimmett'
 };
@@ -77,6 +93,7 @@ server.listen(port, function(err) {
   Object.keys(ifaces).forEach(function (dev) {
     ifaces[dev].forEach(function (details) {
       if (details.family === 'IPv4') {
+        console.log(details)
         console.log(('  ' + 'http://' + details.address + ':' + port.toString()));
       }
     });
@@ -85,5 +102,5 @@ server.listen(port, function(err) {
 
 
 io.on('connection', function(socket) {
-  socket.emit('news', { hello: 'world' });
+  socket.emit('news', { msg: 'hello world' });
 })

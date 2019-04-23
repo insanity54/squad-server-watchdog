@@ -1,7 +1,7 @@
 {% extends "template.nunjucks" %}
 
 {% block header %}
-  <h1>SquadServersFast.com - Control Panel</h1>
+  <h1>SquadServersFast.com - Server Management Control Panel</h1>
   <h3>{{ squadServerName }}</h3>
 {% endblock %}
 
@@ -19,6 +19,10 @@
     </div>
   </div>
 
+</div>
+
+<div class="all-100 top-space">
+  <button id="launchAndJoin" class="ink-button"><a href="steam://rungameid/393380//%20+connect%20{{ squadServerIp }}:{{ squadServerPort }}">Launch Squad & Join</a></button>
 </div>
 
 <div class="log all-100 top-space">

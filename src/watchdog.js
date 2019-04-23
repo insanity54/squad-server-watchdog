@@ -1,12 +1,17 @@
 const os = require('os');
+require('dotenv').config();
 const { spawn } = require('child_process');
 const path = require('path');
-const squadServerArgs = ['Port=7787', 'QueryPort=27165', '-log'];
+
+const squadServerPort = process.env.SQUAD_SERVER_PORT || 7787;
+const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT || 27165;
+const squadServerArgs = [`Port=${ squadServerPort }`, `QueryPort=${ squadServerQueryPort }`, '-log'];
+
 const spawnOpts = {
   stdio: 'pipe'
 };
 
-
+const squadServerPort =
 
 const getSpawn = () => {
   var squadServerPath;
@@ -24,6 +29,7 @@ const getSpawn = () => {
 }
 
 const watch = (app, io) => {
+
 
   const squad = getSpawn();
 
