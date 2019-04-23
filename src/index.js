@@ -19,7 +19,6 @@ const watchdog = require('./watchdog')(app, io);
 
 const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT;
 const squadServerPort = process.env.SQUAD_SERVER_PORT;
-const squadServerIp = process.env.SQUAD_SERVER_IP;
 
 
 
@@ -45,13 +44,15 @@ const getSquadServerName = () => {
 
 
 const getSquadServerIp = () => {
+  var ip;
   Object.keys(ifaces).forEach(function (dev) {
     ifaces[dev].forEach(function (details) {
-      if (details.family === 'IPv4') {
-        console.log(('  ' + 'http://' + details.address + ':' + port.toString()));
+      if (details.family === 'IPv4' && details.cidr !== '00:00:00:00:00:00') {
+        ip = details.address;
       }
     });
   });
+  return ip;
 }
 
 nunjucks.configure(templateDir, {
@@ -66,7 +67,7 @@ const siteData = {
   squadServerName: getSquadServerName(),
   squadServerQueryPort: squadServerQueryPort,
   squadServerPort: squadServerPort,
-  squadServerIp: squadServerIp,
+  squadServerIp: getSquadServerIp(),
   description: 'Squad Servers Fast Control Panel',
   author: 'chris grimmett'
 };
