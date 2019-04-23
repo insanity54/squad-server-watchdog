@@ -1,7 +1,7 @@
 {% extends "template.nunjucks" %}
 
 {% block header %}
-  <h1>SquadServersFast.com - Server Management</h1>
+  <h1>SquadServersFast.com - Control Panel</h1>
   <h3>{{ squadServerName }}</h3>
 {% endblock %}
 

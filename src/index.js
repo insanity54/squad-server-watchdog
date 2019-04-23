@@ -51,7 +51,7 @@ const siteData = {
   title: 'Squad Servers Fast',
   subtitle: 'Server Management',
   squadServerName: getSquadServerName(),
-  description: 'Squad Servers Fast Server Management',
+  description: 'Squad Servers Fast Control Panel',
   author: 'chris grimmett'
 };
 
