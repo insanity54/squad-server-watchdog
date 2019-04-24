@@ -11,6 +11,8 @@ const fs = require('fs');
 const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT;
 const squadServerPort = process.env.SQUAD_SERVER_PORT;
 
+console.log(`squadServerQueryPort:${squadServerQueryPort}. squadServerPort: ${squadServerPort}`);
+
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
