@@ -30,7 +30,7 @@
 </div>
 
 
-<div class="debug">
+<div class="debug all-100 top-space">
   <h3>Vars</h3>
   <p>Title {{ title }}</p>
   <p>Subtitle {{ subtitle }}</p>
