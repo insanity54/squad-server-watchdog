@@ -10,8 +10,9 @@ const fs = require('fs');
 
 const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT;
 const squadServerPort = process.env.SQUAD_SERVER_PORT;
+const squadServerWatchdogPort = process.env.SQUAD_SERVER_WATCHDOG_PORT;
 
-console.log(`squadServerQueryPort:${squadServerQueryPort}. squadServerPort: ${squadServerPort}`);
+console.log(`squadServerQueryPort:${squadServerQueryPort}. squadServerPort: ${squadServerPort}, SQUAD_SERVER_WATCHDOG_PORT: ${squadServerWatchdogPort}`);
 
 const express = require('express');
 const app = express();
