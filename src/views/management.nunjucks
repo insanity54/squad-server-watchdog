@@ -29,4 +29,17 @@
   <p>{{ squad_server_log | default('loading Squad Server log...')}}</p>
 </div>
 
+
+<div class="debug">
+  <h3>Vars</h3>
+  <p>Title {{ title }}</p>
+  <p>Subtitle {{ subtitle }}</p>
+  <p>squadServerName {{ squadServerName }}</p>
+  <p>squadServerQueryPort {{ squadServerQueryPort }}</p>
+  <p>squadServerPort {{ squadServerPort }}</p>
+  <p>squadServerIp {{ squadServerIp }}</p>
+  <p>description {{ description }}</p>
+  <p>author {{ author }}</p>
+</div>
+
 {% endblock %}
