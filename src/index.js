@@ -8,6 +8,8 @@ const path = require('path');
 const templateDir = path.join(__dirname, 'views');
 const fs = require('fs');
 
+const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT;
+const squadServerPort = process.env.SQUAD_SERVER_PORT;
 
 const express = require('express');
 const app = express();
@@ -17,8 +19,6 @@ const io = require('socket.io')(server);
 
 const watchdog = require('./watchdog')(app, io);
 
-const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT;
-const squadServerPort = process.env.SQUAD_SERVER_PORT;
 
 
 
@@ -69,7 +69,7 @@ const siteData = {
   squadServerPort: squadServerPort,
   squadServerIp: getSquadServerIp(),
   description: 'Squad Servers Fast Control Panel',
-  author: 'chris grimmett'
+  author: 'Chris Grimmett'
 };
 
 
