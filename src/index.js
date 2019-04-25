@@ -106,5 +106,5 @@ server.listen(port, function(err) {
 
 
 io.on('connection', function(socket) {
-  socket.emit('news', { msg: 'hello world' });
-})
+  socket.emit('news', { msg: 'hello world', data: watchdog });
+});

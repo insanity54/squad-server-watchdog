@@ -53,11 +53,20 @@
       <link rel="stylesheet" type="text/css" href="/sqpaymentform-basic.css">
       <script src="/socket.io/socket.io.js"></script>
       <script>
+        // Socket IO
         var href = window.location.href;
         var socket = io.connect(href);
         socket.on('news', function (data) {
           console.log(data);
-          socket.emit('news', { msg: 'i am a client and i just received some news' });
+          socket.emit(
+            'news',
+            { msg: 'i am a client and i just received some news' }
+          );
+        });
+
+        // Update news div when news comes in
+        socket.on('news', function(news) {
+          $('#data').innerHtml(news);
         });
       </script>
       {% endblock %}

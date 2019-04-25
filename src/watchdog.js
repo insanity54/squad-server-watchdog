@@ -43,6 +43,14 @@ const watch = (app, io) => {
   squad.on('close', (code) => {
     io.emit('news', { msg: 'SquadServer.exe exited', data: code });
   });
+
+  const doggie = {
+    squad: squad,
+    status: '',
+    log: ''
+  };
+
+  return doggie;
 }
 
 
