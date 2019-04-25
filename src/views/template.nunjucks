@@ -63,12 +63,9 @@
             'news',
             { msg: 'i am a client and i just received some news' }
           );
-        });
-
-        // Update news div when news comes in
-        socket.on('news', function(news) {
           $('#data').innerHtml = news;
         });
+
       </script>
       {% endblock %}
 
