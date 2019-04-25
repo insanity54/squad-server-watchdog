@@ -67,7 +67,7 @@
 
         // Update news div when news comes in
         socket.on('news', function(news) {
-          $('#data').innerHtml(news);
+          $('#data').innerHtml = news;
         });
       </script>
       {% endblock %}
