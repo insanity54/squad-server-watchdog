@@ -57,14 +57,14 @@
         // Socket IO
         var href = window.location.href;
         var socket = io.connect(href);
-        socket.on('news', function (data) {
-          console.log(data);
-          socket.emit(
-            'news',
-            { msg: 'i am a client and i just received some news' }
-          );
-          $('#data').html(news);
+        socket.on('news', function (payload) {
+          console.log(payload);
+          $('.news').append('<p>'+payload.data+'</p>');
         });
+
+        socket.on('lifecycle', function (payload) {
+          $('#status').html('Status: '+payload.squad.status);
+        })
 
       </script>
       {% endblock %}

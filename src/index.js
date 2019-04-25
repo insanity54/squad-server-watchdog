@@ -97,7 +97,7 @@ server.listen(port, function(err) {
   Object.keys(ifaces).forEach(function (dev) {
     ifaces[dev].forEach(function (details) {
       if (details.family === 'IPv4') {
-        console.log(details)
+        // console.log(details)
         console.log(('  ' + 'http://' + details.address + ':' + port.toString()));
       }
     });
@@ -106,5 +106,6 @@ server.listen(port, function(err) {
 
 
 io.on('connection', function(socket) {
-  socket.emit('news', { msg: 'hello world', data: watchdog });
+  console.log('A socket.io connection has been made.')
+  socket.emit('news', { msg: 'connection established', data: 'Connection est.' });
 });

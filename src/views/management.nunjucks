@@ -10,7 +10,7 @@
 <div class="lifecycle all-50">
   <div class="column-group horizontal-gutters vertical top-space">
     <div class="all-100">
-      <p>Status: {{ squad_server_status | default('Offline') }}</p>
+      <p id="status">Status: {{ squad_server_status | default('Offline') }}</p>
     </div>
     <div class="all-100">
       <button class="ink-button green">Start</button>
@@ -25,6 +25,11 @@
   <button id="launchAndJoin" class="ink-button"><a href="steam://rungameid/393380//%20+connect%20{{ squadServerIp }}:{{ squadServerPort }}">Launch Squad & Join</a></button>
 </div>
 
+<div class="news all-100 top-space">
+  <h3>News</h3>
+  <p id="news"></p>
+  <p id="data"></p>
+</div>
 
 <div class="log all-100 top-space">
   <p>{{ squad_server_log | default('loading Squad Server log...')}}</p>
@@ -43,10 +48,6 @@
   <p>author {{ author }}</p>
 </div>
 
-<div class="news all-100 top-space">
-  <h3>News</h3>
-  <p id="news"></p>
-  <p id="data"></p>
-</div>
+
 
 {% endblock %}

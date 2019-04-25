@@ -12,7 +12,7 @@ const spawnOpts = {
 };
 
 
-const getSpawn = () => {
+const doSpawn = () => {
   var squadServerPath;
   var process;
 
@@ -21,7 +21,7 @@ const getSpawn = () => {
     process = spawn(squadServerPath, squadServerArgs, spawnOpts);
   } else {
     squadServerPath = 'journalctl';
-    process = spawn('journalctl', ['-x', '-f'], spawnOpts);
+    process = spawn('tail', ['-f', '/var/log/syslog'], spawnOpts);
   }
 
   return process;
@@ -30,23 +30,39 @@ const getSpawn = () => {
 const watch = (app, io) => {
 
 
-  const squad = getSpawn();
+  const squad = doSpawn();
+
+  // console.log(squad);
+  var stat = 'Offline';
 
   squad.stdout.on('data', (data) => {
-    io.emit('news', { msg: 'hello SquadServer.exe stdout update', data: data });
+    console.log(`data on stdout: ${data}`);
+    stat = 'Online';
+    io.emit('news', { msg: 'hello SquadServer.exe stdout update', data: data.toString() });
   });
 
   squad.stderr.on('data', (data) => {
+    console.log(`data on stderr: ${data}`);
     io.emit('news', { msg: 'hello SquadServer.exe stderr', data: data });
   });
 
   squad.on('close', (code) => {
-    io.emit('news', { msg: 'SquadServer.exe exited', data: code });
+    console.log(`squad has closed!: ${data}`);
+    stat = 'Offline';
+    io.emit('lifecycle', { msg: 'SquadServer.exe closed', status: stat });
   });
 
+  squad.on('exit', (code) => {
+    console.log(`squad has exited!: ${data}`);
+    stat = 'Offline';
+    io.emit('lifecycle', { msg: 'SquadServer.exe exited', status: stat });
+  });
+
+
+  // Return this object so index.js can know what watchdog.js is doing.
   const doggie = {
     squad: squad,
-    status: '',
+    status: stat,
     log: ''
   };
 
