@@ -8,7 +8,7 @@ const squadServerQueryPort = process.env.SQUAD_SERVER_QUERY_PORT || 27165;
 const squadServerArgs = [`Port=${ squadServerPort }`, `QueryPort=${ squadServerQueryPort }`, '-log'];
 
 const spawnOpts = {
-  stdio: 'pipe'
+  stdio: 'inherit'
 };
 
 
